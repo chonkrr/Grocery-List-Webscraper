@@ -18,16 +18,18 @@ def extract_urls(searchterm):
 
         if elements and len(elements) > 1:
             # Skip the first element and get the next three links
-            links = elements[1:4]
+            links = elements[2:3]
             for link in links:
                 url = link.get_attribute('href')
-                if not url.__contains__(searchterm):
-                    continue
                 full_url = page.url.split('/search?')[0] + url  # Append the relative URL to the base URL
                 print(full_url)
+        elif len(elements) == 1:
+            link = elements[0]
+            url = link.get_attribute('href')
+            full_url = page.url.split('/search?')[0] + url  # Append the relative URL to the base URL
+            print(full_url)
         else:
-            print("Not enough elements found")
+            print("No product links found on the page.")
 
         browser.close()
-
-extract_urls("milk")
+extract_urls("apples")
