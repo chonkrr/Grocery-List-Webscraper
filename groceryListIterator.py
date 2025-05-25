@@ -31,6 +31,7 @@ def main():
     # Iterate through the list
     for product in groceryListIterator:
         urlwebscraper.extract_urls(product)
+    
         
 
 if __name__ == "__main__":
